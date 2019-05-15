@@ -260,22 +260,21 @@ ccl_device_inline float3 panorama_to_direction(KernelGlobals *kg, float u, float
 			return fisheye_to_direction(u, v, kernel_data.cam.fisheye_fov);
 		// Omnidirectional Camera
 		case PANORAMA_OMNI:
-			return omni_to_direction(u,
-									 v,
-									 cam->width,
-									 cam->height,
-									 cam->radius * cam->height / 2.f,
-									 cam->a0,
-									 cam->a1,
-									 cam->a2,
-									 cam->a3,
-									 cam->a4,
-									 cam->c,
-									 cam->d,
-									 cam->e,
-									 cam->width / 2.f + cam->shift_cx,
-									 cam->height / 2.f + cam->shift_cy,
-									 1.f / (cam->c - cam->d*cam->e));
+			return omni_to_direction(u, v,
+				kernel_data.cam.width,
+				kernel_data.cam.height,
+				kernel_data.cam.radius * kernel_data.cam.height / 2.f,
+				kernel_data.cam.a0,
+				kernel_data.cam.a1,
+				kernel_data.cam.a2,
+				kernel_data.cam.a3,
+				kernel_data.cam.a4,
+				kernel_data.cam.c,
+				kernel_data.cam.d,
+				kernel_data.cam.e,
+				kernel_data.cam.width / 2.f + kernel_data.cam.shift_cx,
+				kernel_data.cam.height / 2.f + kernel_data.cam.shift_cy,
+				1.f / (kernel_data.cam.c - kernel_data.cam.d*kernel_data.cam.e));
 		// Omni
 		case PANORAMA_FISHEYE_EQUISOLID:
 		default:
@@ -296,13 +295,13 @@ ccl_device_inline float2 direction_to_panorama(KernelGlobals *kg, float3 dir)
 		// Omnidirectional Camera
 		case PANORAMA_OMNI:
 			return direction_to_omni(dir,
-									 cam->width,
-									 cam->height,
-									 cam->c,
-									 cam->d,
-									 cam->e,
-									 cam->width / 2.f + cam->shift_cx,
-									 cam->height / 2.f + cam->shift_cy);
+				kernel_data.cam.width,
+				kernel_data.cam.height,
+				kernel_data.cam.c,
+				kernel_data.cam.d,
+				kernel_data.cam.e,
+				kernel_data.cam.width / 2.f + kernel_data.cam.shift_cx,
+				kernel_data.cam.height / 2.f + kernel_data.cam.shift_cy);
 		// Omni
 		case PANORAMA_FISHEYE_EQUISOLID:
 		default:
