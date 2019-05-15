@@ -114,6 +114,33 @@ class DATA_PT_lens(CameraButtonsPanel, Panel):
                     sub = row.column(align=True)
                     sub.prop(ccam, "longitude_min")
                     sub.prop(ccam, "longitude_max")
+                # Omnidirectional Camera
+                elif ccam.panorama_type == 'OMNI':
+                    row = layout.row()
+                    sub = row.column(align=True)
+                    sub.label(text="Polynomial:")
+                    sub.prop(ccam, "a0")
+                    sub.prop(ccam, "a1")
+                    sub.prop(ccam, "a2")
+                    sub.prop(ccam, "a3")
+                    sub.prop(ccam, "a4")
+                    sub = row.column(align=True)
+                    sub.label(text="Shift (pixels):")
+                    sub.prop(ccam, "shift_cx", text="X")
+                    sub.prop(ccam, "shift_cy", text="Y")
+                    sub = row.column(align=True)
+                    sub.label(text="Affine parameters:")
+                    sub.prop(ccam, "c")
+                    sub.prop(ccam, "d")
+                    sub.prop(ccam, "e")
+                    sub = row.column(align=True)
+                    sub.label(text="Radius (scale factor of half-height):")
+                    sub.prop(ccam, "radius", text="Radius")
+                if not ccam.panorama_type == 'OMNI':
+                    col = split.column(align=True)
+                    col.label(text="Shift:")
+                    col.prop(cam, "shift_x", text="X")
+                    col.prop(cam, "shift_y", text="Y")
             elif engine == 'BLENDER_RENDER':
                 row = col.row()
                 if cam.lens_unit == 'MILLIMETERS':
@@ -124,10 +151,10 @@ class DATA_PT_lens(CameraButtonsPanel, Panel):
 
         split = layout.split()
 
-        col = split.column(align=True)
-        col.label(text="Shift:")
-        col.prop(cam, "shift_x", text="X")
-        col.prop(cam, "shift_y", text="Y")
+        # col = split.column(align=True)
+        # col.label(text="Shift:")
+        # col.prop(cam, "shift_x", text="X")
+        # col.prop(cam, "shift_y", text="Y")
 
         col = split.column(align=True)
         col.label(text="Clipping:")

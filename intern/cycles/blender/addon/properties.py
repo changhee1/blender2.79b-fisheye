@@ -69,6 +69,7 @@ enum_panorama_types = (
     ('FISHEYE_EQUISOLID', "Fisheye Equisolid",
                           "Similar to most fisheye modern lens, takes sensor dimensions into consideration"),
     ('MIRRORBALL', "Mirror Ball", "Uses the mirror ball mapping"),
+     ('OMNI', "Omnidirectional", "Uses Scaramuzza omnidirectional camera model"),
     )
 
 enum_curve_primitives = (
@@ -811,6 +812,61 @@ class CyclesCameraSettings(bpy.types.PropertyGroup):
                 min=-math.pi, max=math.pi,
                 subtype='ANGLE',
                 default=math.pi,
+                )
+        cls.a0 = FloatProperty(
+                name="a0",
+                description="a0",
+                default=-2.108794e+02,
+                )
+        cls.a1 = FloatProperty(
+                name="a1",
+                description="a1",
+                default=0.0,
+                )
+        cls.a2 = FloatProperty(
+                name="a2",
+                description="a2",
+                default=1.971697e-03,
+                )
+        cls.a3 = FloatProperty(
+                name="a3",
+                description="a3",
+                default=-2.633567e-06,
+                )
+        cls.a4 = FloatProperty(
+                name="a4",
+                description="a4",
+                default=1.266556e-08,
+                )
+        cls.shift_cx = FloatProperty(
+                name="shift_cx",
+                description="shift_cx",
+                default=-21.763489,
+                )
+        cls.shift_cy = FloatProperty(
+                name="shift_cy",
+                description="shift_cy",
+                default=9.460006,
+                )
+        cls.c = FloatProperty(
+                name="c",
+                description="c",
+                default=0.999609,
+                )
+        cls.d = FloatProperty(
+                name="d",
+                description="d",
+                default=-0.000222,
+                )
+        cls.e = FloatProperty(
+                name="e",
+                description="e",
+                default=-0.000116,
+                )
+        cls.radius = FloatProperty(
+                name="radius",
+                description="radius",
+                default=0.0,
                 )
 
     @classmethod

@@ -62,6 +62,19 @@ struct BlenderCamera {
 	float latitude_max;
 	float longitude_min;
 	float longitude_max;
+	// Omnidirectional Camera
+	float a0;
+	float a1;
+	float a2;
+	float a3;
+	float a4;
+	float c;
+	float d;
+	float e;
+	float shift_cx;
+	float shift_cy;
+	float radius;
+	// Omnidirectional Camera
 	bool use_spherical_stereo;
 	float interocular_distance;
 	float convergence_distance;
@@ -172,7 +185,19 @@ static void blender_camera_from_object(BlenderCamera *bcam,
 		bcam->latitude_max = RNA_float_get(&ccamera, "latitude_max");
 		bcam->longitude_min = RNA_float_get(&ccamera, "longitude_min");
 		bcam->longitude_max = RNA_float_get(&ccamera, "longitude_max");
-
+		// Omnidirectional Camera
+		bcam->a0 = RNA_float_get(&ccamera, "a0");
+    	bcam->a1 = RNA_float_get(&ccamera, "a1");
+    	bcam->a2 = RNA_float_get(&ccamera, "a2");
+    	bcam->a3 = RNA_float_get(&ccamera, "a3");
+    	bcam->a4 = RNA_float_get(&ccamera, "a4");
+    	bcam->c = RNA_float_get(&ccamera, "c");
+    	bcam->d = RNA_float_get(&ccamera, "d");
+	    bcam->e = RNA_float_get(&ccamera, "e");
+		bcam->shift_cx = RNA_float_get(&ccamera, "shift_cx");
+		bcam->shift_cy = RNA_float_get(&ccamera, "shift_cy");
+		bcam->radius = RNA_float_get(&ccamera, "radius");
+		// Omnidirectional Camera
 		bcam->interocular_distance = b_camera.stereo().interocular_distance();
 		if(b_camera.stereo().convergence_mode() == BL::CameraStereoData::convergence_mode_PARALLEL) {
 			bcam->convergence_distance = FLT_MAX;
@@ -415,6 +440,20 @@ static void blender_camera_sync(Camera *cam, BlenderCamera *bcam, int width, int
 
 	cam->longitude_min = bcam->longitude_min;
 	cam->longitude_max = bcam->longitude_max;
+	// Omnidirectional Camera
+	cam->a0 = bcam->a0;
+  	cam->a1 = bcam->a1;
+  	cam->a2 = bcam->a2;
+  	cam->a3 = bcam->a3;
+  	cam->a4 = bcam->a4;
+  	cam->c = bcam->c;
+  	cam->d = bcam->d;
+	cam->e = bcam->e;
+	cam->shift_cx = bcam->shift_cx;
+	cam->shift_cy = bcam->shift_cy;
+	cam->radius = bcam->radius;
+	// Omni
+
 
 	/* panorama stereo */
 	cam->interocular_distance = bcam->interocular_distance;

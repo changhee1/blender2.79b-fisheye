@@ -103,6 +103,20 @@ public:
 	float longitude_min;
 	float longitude_max;
 
+	// Omnidirectional
+	float a0;
+	float a1;
+	float a2;
+	float a3;
+	float a4;
+	float c;
+	float d;
+	float e;
+	float shift_cx;
+	float shift_cy;
+	float radius;
+	// Omni
+
 	/* panorama stereo */
 	StereoEye stereo_eye;
 	bool use_spherical_stereo;

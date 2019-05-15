@@ -403,6 +403,19 @@ void Camera::device_update(Device *device, DeviceScene *dscene, Scene *scene)
 	kcam->equirectangular_range = make_float4(longitude_min - longitude_max, -longitude_min,
 	                                          latitude_min -  latitude_max, -latitude_min + M_PI_2_F);
 
+	// Omnidirectional Camera
+	kcam->a0 = a0;
+	kcam->a1 = a1;
+	kcam->a2 = a2;
+	kcam->a3 = a3;
+	kcam->a4 = a4;
+	kcam->c = c;
+	kcam->d = d;
+	kcam->e = e;
+	kcam->shift_cx = shift_cx;
+	kcam->shift_cy = shift_cy;
+	kcam->radius = radius;
+	//
 	switch(stereo_eye) {
 		case STEREO_LEFT:
 			kcam->interocular_offset = -interocular_distance * 0.5f;
