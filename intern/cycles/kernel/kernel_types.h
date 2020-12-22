@@ -1084,6 +1084,8 @@ typedef struct KernelCamera {
 	float a2;
 	float a3;
 	float a4;
+	float a5;
+	float a6;
 	float c;
 	float d;
 	float e;

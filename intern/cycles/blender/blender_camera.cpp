@@ -68,6 +68,8 @@ struct BlenderCamera {
 	float a2;
 	float a3;
 	float a4;
+	float a5;
+	float a6;
 	float c;
 	float d;
 	float e;
@@ -191,6 +193,8 @@ static void blender_camera_from_object(BlenderCamera *bcam,
     	bcam->a2 = RNA_float_get(&ccamera, "a2");
     	bcam->a3 = RNA_float_get(&ccamera, "a3");
     	bcam->a4 = RNA_float_get(&ccamera, "a4");
+    	bcam->a5 = RNA_float_get(&ccamera, "a5");
+    	bcam->a6 = RNA_float_get(&ccamera, "a6");
     	bcam->c = RNA_float_get(&ccamera, "c");
     	bcam->d = RNA_float_get(&ccamera, "d");
 	    bcam->e = RNA_float_get(&ccamera, "e");
@@ -446,6 +450,8 @@ static void blender_camera_sync(Camera *cam, BlenderCamera *bcam, int width, int
   	cam->a2 = bcam->a2;
   	cam->a3 = bcam->a3;
   	cam->a4 = bcam->a4;
+  	cam->a5 = bcam->a5;
+  	cam->a6 = bcam->a6;
   	cam->c = bcam->c;
   	cam->d = bcam->d;
 	cam->e = bcam->e;

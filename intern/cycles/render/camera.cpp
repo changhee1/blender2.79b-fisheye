@@ -409,6 +409,8 @@ void Camera::device_update(Device *device, DeviceScene *dscene, Scene *scene)
 	kcam->a2 = a2;
 	kcam->a3 = a3;
 	kcam->a4 = a4;
+	kcam->a5 = a5;
+	kcam->a6 = a6;
 	kcam->c = c;
 	kcam->d = d;
 	kcam->e = e;

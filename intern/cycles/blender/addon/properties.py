@@ -838,6 +838,16 @@ class CyclesCameraSettings(bpy.types.PropertyGroup):
                 description="a4",
                 default=1.266556e-08,
                 )
+        cls.a5 = FloatProperty(
+                name="a5",
+                description="a5",
+                default=0,
+                )
+        cls.a6 = FloatProperty(
+                name="a6",
+                description="a6",
+                default=0,
+                )
         cls.shift_cx = FloatProperty(
                 name="shift_cx",
                 description="shift_cx",

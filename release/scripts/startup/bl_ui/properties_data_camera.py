@@ -124,6 +124,8 @@ class DATA_PT_lens(CameraButtonsPanel, Panel):
                     sub.prop(ccam, "a2")
                     sub.prop(ccam, "a3")
                     sub.prop(ccam, "a4")
+                    sub.prop(ccam, "a5")
+                    sub.prop(ccam, "a6")
                     sub = row.column(align=True)
                     sub.label(text="Shift (pixels):")
                     sub.prop(ccam, "shift_cx", text="X")

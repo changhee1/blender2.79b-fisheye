@@ -171,6 +171,8 @@ ccl_device float3 omni_to_direction(float u,
 	float a2,
 	float a3,
 	float a4,
+	float a5,
+	float a6,
 	float kC,
 	float kD,
 	float kE,
@@ -190,8 +192,10 @@ ccl_device float3 omni_to_direction(float u,
 
 	// ray z-direction
 	const float rho2 = affine_u * affine_u + affine_v * affine_v;
+	const float rho4 = rho2*rho2;
 	const float rho = sqrtf(rho2);
-	const float z = a0 + a1*rho + a2*rho2 + a3*rho2*rho + a4*rho2*rho2;
+	const float z = a0 + a1*rho + a2*rho2 + a3*rho2*rho + a4*rho4 +
+		a5*rho4*rho + a6*rho4*rho2;
 	const float invnorm = 1.f / sqrtf(affine_u*affine_u + affine_v*affine_v + z*z);
 
 	return make_float3(
@@ -269,6 +273,8 @@ ccl_device_inline float3 panorama_to_direction(KernelGlobals *kg, float u, float
 				kernel_data.cam.a2,
 				kernel_data.cam.a3,
 				kernel_data.cam.a4,
+				kernel_data.cam.a5,
+				kernel_data.cam.a6,
 				kernel_data.cam.c,
 				kernel_data.cam.d,
 				kernel_data.cam.e,
